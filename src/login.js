@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, Button } from "react-native";
-import { autoInputChange } from "./actions/index";
+import { autoInputChange, login } from "./actions/index";
 import { connect } from "react-redux";
 import firebase from "firebase";
 class Login extends Component {
@@ -18,6 +18,12 @@ class Login extends Component {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+  }
+
+  login() {
+    const { email, password } = this.props;
+
+    this.props.login({ email, password });
   }
 
   render() {
@@ -41,7 +47,7 @@ class Login extends Component {
           }
         />
         <Text style={styles.Text}>
-          <Button title="LogIn" onPress={console.log(this.props.email)} />
+          <Button title="LogIn" onPress={this.login.bind(this)} />
         </Text>
       </View>
     );
@@ -71,4 +77,4 @@ const styles = {
     marginLeft: 90
   }
 };
-export default connect(mapStateToProps, { autoInputChange })(Login);
+export default connect(mapStateToProps, { autoInputChange, login })(Login);
