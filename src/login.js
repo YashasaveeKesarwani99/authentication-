@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { autoInputChange } from "./actions/index";
 import { connect } from "react-redux";
-
+import firebase from "firebase";
 class Login extends Component {
+  componentDidMount() {
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAflDrArjZysSKtkUw7UTPXi0oZKrZPL_g",
+      authDomain: "react-native-authenticat-ea34c.firebaseapp.com",
+      databaseURL: "https://react-native-authenticat-ea34c.firebaseio.com",
+      projectId: "react-native-authenticat-ea34c",
+      storageBucket: "react-native-authenticat-ea34c.appspot.com",
+      messagingSenderId: "660179138565",
+      appId: "1:660179138565:web:a220c7f1027986218a846c",
+      measurementId: "G-F1VBS7JYF6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }
+
   render() {
     return (
       <View style={styles.container}>
